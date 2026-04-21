@@ -1,6 +1,23 @@
 # Proyecto_Intermodular_IanLasa
-Hay dos maneras:
-1. Simplemente descargar la carpeta The_Shattered_Deck en su totalidad, en la ruta: Proyecto_Intermodular_IanLasa\XAMPP\htdocs
-De ahí simplemente abrir desde cualquier editor a una web como chrome, y técnicamente debería de funcionar ya que todo está en rutas relativas.
+Muy Sencillo,
 
-2. Descargar todo el repositorio para poder comprobar el XAMPP, aunque ahora mismo no es necesario, ya que no tiene funciones necesarias actualmente.
+Como hacer funcionar la WEB
+  - Descargar la carpeta Proyecto_intermodular_Ianlasa/The_Shattered_Deck_Ian
+  - Si tienes docker desktop (en windows), perfecto no hay problema, sino a instalarlo "https://docs.docker.com/desktop/setup/install/windows-install/"
+  - Una vez tengas docker, te metes en la carpeta raiz de mi proyecto "The_Shattered_Deck_Ian" en cmd o powershell, y ejecutas docker compose up -d
+  - Te debería salir algo en plan created ... cuatro veces
+  - Si ha funcionado, ve a un navegador, a http://localhost:8080, tardará un poco, dale unos 2 minutos o así.
+  - Y con eso debería estar todo lo de la web, mándame un correo si pasa algo...
+
+Máquina Virtual
+  - Muchíssimo más simple.
+  - Descargate el .ova /Proyecto_Intermodular_IanLasa/IA_Ollama_Ubuntu.ova
+  - La enciendes, y ya, debería de encenderse el docker automáticamente
+  - En el caso de que de problemas o quieras entrar
+  - Tiene un usuario con sudo:
+      - user = user
+      - password = user
+  -  El teclado está en ingles, aviso.
+
+P.D: Las respuestas de la IA no son las mejores... pero no puedo permitirme un modelo mucho mejor.
+AVISO: Aveces puede tardar, pero no hagas muchas tiradas a la vez, que tardará muchíssimo mas.
