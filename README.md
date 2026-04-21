@@ -4,7 +4,8 @@ Muy Sencillo,
 Como hacer funcionar la WEB
   - Descargar la carpeta Proyecto_intermodular_Ianlasa/The_Shattered_Deck_Ian
   - Si tienes docker desktop (en windows), perfecto no hay problema, sino a instalarlo "https://docs.docker.com/desktop/setup/install/windows-install/"
-  - Una vez tengas docker, te metes en la carpeta raiz de mi proyecto "The_Shattered_Deck_Ian" en cmd o powershell, y ejecutas docker compose up -d
+  - Una vez tengas docker, te metes en la carpeta raiz de mi proyecto "The_Shattered_Deck_Ian" en cmd o powershell, y ejecutas:
+    - docker compose up -d
   - Te debería salir algo en plan created ... cuatro veces
   - Si ha funcionado, ve a un navegador, a http://localhost:8080, tardará un poco, dale unos 2 minutos o así.
   - Y con eso debería estar todo lo de la web, mándame un correo si pasa algo...
