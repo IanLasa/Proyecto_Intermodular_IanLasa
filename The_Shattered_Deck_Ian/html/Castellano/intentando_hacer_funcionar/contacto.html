@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../Imagenes/The_Shattered_Deck.ico" />
+    <title>Contacto | The Shattered Deck</title>
+    <link rel="stylesheet" href="../../css/Castellano/contacto.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="lectura.html">Lectura</a></li>
+                <li><a href="about.html">Sobre el Proyecto</a></li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="titulo-contacto">
+            <h1>CONTÁCTANOS</h1>
+            <p class="subtitulos">"Tus palabras también importan en este caos"</p>
+        </section>
+
+        <div class="tabla-contacto">
+            <div class="info-contacto">
+                <h2>¿Tienes algo que decirnos?</h2>
+                <p>The Shattered Deck es un proyecto en constante evolución. Tu feedback, preguntas y experiencias nos
+                    ayudan a mejorar esta experiencia de tarot interactivo.</p>
+
+                <div class="columna-info">
+                    <div class="caja-info">
+                        <div class="icono">💬</div>
+                        <h3>Feedback</h3>
+                        <p>Comparte tu experiencia con las lecturas, los decks y las cartas corruptas.</p>
+                    </div>
+
+                    <div class="caja-info">
+                        <div class="icono">🐛</div>
+                        <h3>Reportar Bugs</h3>
+                        <p>¿Encontraste algo más corrupto de lo esperado? Házmelo saber.</p>
+                    </div>
+
+                    <div class="caja-info">
+                        <div class="icono">💡</div>
+                        <h3>Sugerencias</h3>
+                        <p>Ideas para nuevos decks, mecánicas o formas de corrupción.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabla-formulario-contacto">
+                <form class="formulario-contacto" id="formulario-contacto">
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamas?" required>
+                    </div>
+
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div>
+                        <label for="asunto">Asunto</label>
+                        <select id="asunto" name="asunto" required>
+                            <option value="">Selecciona un tema...</option>
+                            <option value="Feedback General">Feedback General</option>
+                            <option value="Reportar Bug">Reportar Bug</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mazo">¿Con qué mazo tuviste una mala experiencia? (opcional)</label>
+                        <select id="mazo" name="mazo">
+                            <option value="Ninguno">Ninguno</option>
+                            <option value="Mazo Místico">Mazo mystico</option>
+                            <option value="Mazo Racional">Mazo racional</option>
+                            <option value="Mazo Sarcástico">Mazo sarcástico</option>
+                            <option value="Mazo Roto">Mazo roto</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="8" placeholder="Cuéntanos tu experiencia, sugerencia o pregunta..." required></textarea>
+                    </div>
+
+                    <div class="centrar-boton-contacto">
+                        <button type="submit" class="boton-contacto" id="btn-enviar">
+                            <span>Enviar Mensaje</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <section class="titulo-contacto">
+            <h2>Otras formas de contactar</h2>
+            <div class="cajas-contactar">
+                <section class="contactar-email">
+                    <span class="icono-enlaces">📧</span>
+                    <h3>Email Directo</h3>
+                    <p>ilasallore@educacion.navarra.es</p>
+                </section>
+
+                <a href="" class="contactar-github">
+                    <span class="icono-enlaces">👾</span>
+                    <h3>GitHub</h3>
+                    <p>Contribuye al proyecto</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Shattered Deck | Una experiencia de tarot impulsada por IA</p>
+    </footer>
+
+    <script>
+        document.getElementById('formulario-contacto').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const btn  = document.getElementById('btn-enviar');
+            const span = btn.querySelector('span');
+
+            span.textContent = 'Enviando...';
+            btn.disabled = true;
+
+            try {
+                const res  = await fetch('contacto.php', { method: 'POST', body: new FormData(form) });
+                const data = await res.json();
+
+                if (data.ok) {
+                    span.textContent = '✓ Mensaje enviado';
+                    btn.style.borderColor = '#00d4ff';
+                    form.reset();
+                } else {
+                    span.textContent = 'Error al enviar';
+                    btn.disabled = false;
+                    console.error(data.error);
+                }
+            } catch (err) {
+                span.textContent = 'Error al enviar';
+                btn.disabled = false;
+                console.error(err);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
