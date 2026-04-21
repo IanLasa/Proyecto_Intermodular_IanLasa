@@ -1,0 +1,223 @@
+/* General para todas las páginas*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000000;
+    color: #eeeeee;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+/*  Para que quede bonito al navegar entre páginas */
+
+header {
+    background: rgba(26, 26, 26, 0.9);
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(108, 99, 255, 0.3);
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+nav a {
+    color: #eeeeee;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.5rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+nav a:hover,
+nav a.active {
+    color: #6c63ff;
+    text-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+}
+
+/*  Características main */
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/*  PÁGINA DE CONTACTO */
+
+
+.titulo-contacto {
+    text-align: center;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+}
+
+.subtitulos {
+    text-align: center;
+    color: #999999;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.tabla-contacto {
+    display: grid;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.info-contacto h2 {
+    color: #6c63ff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.info-contacto  p {
+    color: #999999;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.columna-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.caja-info {
+    background: #1a1a1a;
+    padding: 1.5rem;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+
+.caja-info h3 {
+    color: #6c63ff;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.caja-info p {
+    color: #999999;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.icono {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.tabla-formulario-contacto {
+    background: #1a1a1a;
+    padding: 2.5rem;
+    border: 1px solid rgba(108, 99, 255, 0.2);
+}
+
+
+.formulario-contacto label {
+    display: block;
+    color: #eeeeee;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.formulario-contacto input,
+.formulario-contacto select,
+.formulario-contacto textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(108, 99, 255, 0.3);
+    color: #eeeeee;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: 0.3s;
+    margin-bottom: 1.5rem;
+}
+
+.otras-formas-de-contacto {
+    margin-top: 4rem;
+}
+
+.cajas-contactar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contactar-email {
+    background: #1a1a1a;
+    padding: 2rem;
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    text-align: center;
+    color: #eeeeee;
+}
+
+.contactar-github {
+    background: #1a1a1a;
+    padding: 2rem;
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    text-align: center;
+    color: #eeeeee;
+    text-decoration: none;
+}
+
+.icono-enlaces {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+
+/*  BOTONES */
+
+.boton-contacto {
+    padding: 1rem 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 2px;
+    position: relative;
+    
+}
+
+.centrar-boton-contacto {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.boton-contacto:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(108, 99, 255, 0.6);
+}
+
+/* PIE (de página web?) */
+
+footer {
+    background: #1a1a1a;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    color: #999999;
+}

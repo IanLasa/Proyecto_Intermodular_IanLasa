@@ -1,0 +1,205 @@
+/* Para no tener que hacer 3 css meto los colores en variables*/
+body.mazo-mystic {
+    --general: #ab904b;
+    --brillo: rgba(201, 168, 76, 0.35);
+    --bordes: rgba(201, 168, 76, 0.35);
+}
+body.mazo-rational {
+    --general: #00d4ff;
+    --brillo: rgba(0, 212, 255, 0.3);
+    --bordes: rgba(0, 212, 255, 0.25);
+}
+body.mazo-sarcastic {
+    --general: #cc2936;
+    --brillo: rgba(204, 41, 54, 0.35);
+    --bordes: rgba(204, 41, 54, 0.3);
+}
+
+/* Títulos */
+.titulo-tirada {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    text-align: center;
+    color: var(--general);
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px var(--brillo);
+}
+.subtitulo-tirada {
+    text-align: center;
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 42px;
+    letter-spacing: 1px;
+}
+
+/* Nombre mazo */
+.nombre-mazo {
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #444;
+    margin-bottom: 8px;
+    font-family: 'Cinzel', serif;
+}
+
+/* Quadrados decorativos */
+.cartas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 680px;
+    margin: 0 auto 48px auto;
+}
+
+/* Carta flip*/
+.carta-wrapper {
+    aspect-ratio: 2 / 3.5;
+    cursor: pointer;
+}
+.carta-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.75s;
+}
+.carta-wrapper.flipped .carta-inner {
+    transform: rotateY(180deg);
+}
+.carta-front,
+.carta-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 4px;
+}
+
+/* ── Reverso ── */
+.carta-back {
+    background: #0f0f0f;
+    border: 1px solid var(--bordes);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.5s, box-shadow 0.3s;
+}
+.carta-wrapper:not(.no-click):hover .carta-back {
+    box-shadow: 0 0 18px var(--brillo);
+    border-color: var(--general);
+}
+.patron {
+    width: 65%;
+    height: 65%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+}
+.patron span {
+    background: var(--bordes);
+    border-radius: 2px;
+}
+
+/* Frente */
+.carta-front {
+    transform: rotateY(180deg);
+    background: #0a0a0a;
+    border: 1px solid var(--bordes);
+}
+.carta-front img {
+    width: 100%;
+    height: 85%;
+    object-fit: cover;
+    display: block;
+}
+.nombre-carta {
+    background: #0a0a0a;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: var(--general);
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cartas no elegidas se oscurecen */
+.carta-wrapper.descartada .carta-back {
+    opacity: 0.25;
+    filter: grayscale(80%);
+}
+
+/* la caja de lectura de ia */
+.lectura-box {
+    max-width: 680px;
+    background: #0a0a0a;
+    border: 1px solid var(--bordes);
+    border-radius: 4px;
+    padding: 32px 40px;
+    margin: 0 auto;
+    transform: translateY(20px);
+    transition: transform 0.8s ease;
+}
+.lectura-box.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+.lectura-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--general);
+    text-align: center;
+    margin-bottom: 24px;
+    transition: color 0.5s;
+}
+.lectura-texto {
+    color: #ccc;
+    line-height: 1.9;
+    font-size: 16px;
+    text-align: justify;
+}
+
+/* Para los 3 puntitos */
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+}
+.loading-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--general);
+    animation: pulso 1.4s infinite ease-in-out;
+}
+/* Esto si que lo he mirado */
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes pulso {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50%       { opacity: 1;   transform: scale(1.1); }
+}
+
+/* El botón para hacer otra tirada */
+.btn-nueva {
+    display: block;
+    margin: 2.5rem auto 0 auto;
+    padding: 0.9rem 2.5rem;
+    background: transparent;
+    border: 1px solid var(--general);
+    color: var(--general);
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    visibility: hidden;
+}
+.btn-nueva.visible {
+    visibility: visible;
+}
+.btn-nueva:hover {
+    color: #ffffff;
+}

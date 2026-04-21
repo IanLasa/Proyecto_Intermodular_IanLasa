@@ -1,0 +1,206 @@
+/* General para todas las páginas*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI';
+    background-color: #000000;
+    color: #eeeeee;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+/*  Para que quede bonito al navegar entre páginas */
+
+header {
+    background: rgba(26, 26, 26, 0.9);
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(108, 99, 255, 0.3);
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+nav a {
+    color: #eeeeee;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.5rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+nav a:hover,
+nav a.active {
+    color: #6c63ff;
+    text-shadow: 0 0 10px rgb(108, 99, 255, 0.5);
+}
+
+/*  Características main */
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+
+
+/* CONTENEDORES PRINCIPALES */
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    min-height: calc(100vh - 200px);
+}
+
+/*  PÁGINA DE AUTENTICACIÓN */
+
+.tamanyo-formulario {
+    max-width: 500px;
+    margin: 0 auto 4rem;
+}
+
+.caja-login {
+    background: #1a1a1a;
+    padding: 3rem;
+    border: 1px solid rgb(108, 99, 255);
+}
+
+.titulo-formulario {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.formulario label {
+    display: block;
+    color: #eeeeee;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.formulario input {
+    width: 100%;
+    padding: 0.9rem;
+    background: rgb(0, 0, 0);
+    border: 1px solid rgb(108, 99, 255);
+    color: #eeeeee;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.no-cuenta {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(108, 99, 255);
+}
+
+.no-cuenta p {
+    color: #999999;
+}
+
+.registrarse {
+    color: #6c63ff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.registrarse:hover {
+    color: #00d4ff;
+    text-shadow: 0 0 10px rgb(0, 212, 255);
+}
+
+/* Beneficios de crear cuenta */
+
+.titulo-beneficios {
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+
+.tabla-beneficios {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.quadro-beneficios {
+    background:#1a1a1a;
+    padding: 2rem;
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.quadro-beneficios:hover {
+    border-color: #6c63ff;
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+.quadro-beneficios h3 {
+    color: #6c63ff;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.emoji{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+
+/* BOTONES */
+
+.boton-iniciar-sesion {
+    padding: 1rem 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 2px;
+    position: relative;
+    
+}
+
+.centrar-boton-formulario {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.boton-iniciar-sesion:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(108, 99, 255, 0.6);
+}
+
+
+/* PIE (de página web?) */
+
+footer {
+    background: #1a1a1a;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    color: #999999;
+}

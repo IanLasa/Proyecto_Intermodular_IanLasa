@@ -1,0 +1,202 @@
+/* General para todas las páginas*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000000;
+    color: #eeeeee;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+/*  Para que quede bonito al navegar entre páginas */
+
+header {
+    background: rgba(26, 26, 26, 0.9);
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(108, 99, 255, 0.3);
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+nav a {
+    color: #eeeeee;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.5rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+nav a:hover,
+nav a.active {
+    color: #6c63ff;
+    text-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+}
+
+/*  Características main */
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+
+/* PÁGINA DE INICIO */
+
+.principal {
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-bottom: 4rem;
+}
+
+.principal h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(108, 99, 255, 0.6);
+}
+
+.subtitulo {
+    font-size: 1.5rem;
+    color: grey;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.introduccion {
+    max-width: 700px;
+    margin: 2rem auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.resaltado-introduccion {
+    color: orange;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.frase-de-suspense {
+    font-style: italic;
+    color: #00d4ff;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+.warning {
+    background: rgba(255, 149, 0, 0.1);
+    border: 2px dashed #ff9500;
+    padding: 1.5rem;
+    margin: 3rem auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0;
+}
+
+.icono-warning {
+    font-size: 2rem;
+    color: #ff9500;
+}
+
+
+.explicacion {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.explicacion-normal {
+    background: #1a1a1a;
+    padding: 2rem;
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.explicacion-normal:hover {
+    border-color: #6c63ff;
+    transform: translateY(-5px);
+}
+
+.explicacion-normal h3 {
+    color: #6c63ff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.emoji{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/*  BOTONES */
+
+.primer-boton,
+.segundo-boton {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 2px;
+    position: relative;
+    
+}
+
+.centrar-botones {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.primer-boton {
+    background: #5548c8;
+    color: white;
+}
+
+.primer-boton:hover {
+    box-shadow: 0 0 30px rgba(108, 99, 255, 0.6);
+}
+
+.segundo-boton {
+    background: transparent;
+    color: #eeeeee;
+    border: 2px solid #6c63ff;
+}
+
+.segundo-boton:hover {
+    background: rgb(7, 5, 29);
+    border-color: #00d4ff;
+    color: #00d4ff;
+}
+
+
+/* PIE (de página web?) */
+
+footer {
+    background: #1a1a1a;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    color: #999999;
+}

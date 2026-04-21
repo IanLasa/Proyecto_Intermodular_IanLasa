@@ -1,0 +1,182 @@
+/* General para todas las páginas*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000000;
+    color: #eeeeee;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+/*  Para que quede bonito al navegar entre páginas */
+
+header {
+    background: rgba(26, 26, 26, 0.9);
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(108, 99, 255, 0.3);
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+nav a {
+    color: #eeeeee;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.5rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+nav a:hover,
+nav a.active {
+    color: #6c63ff;
+    text-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+}
+
+/*  Características main */
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+
+/* PÁGINA DE LECTURA */
+
+.titulos {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #6c63ff;
+}
+
+.subtitulos {
+    text-align: center;
+    color: #999999;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.requadros-lectura {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.requadro-lectura {
+    background: #1a1a1a;
+    padding: 2rem;
+    border: 2px solid rgba(108, 99, 255, 0.3);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.requadro-lectura:hover {
+    border-color: #6c63ff;
+    transform: scale(1.03);
+}
+
+
+.texto-mazo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.icono-mazo {
+    font-size: 2.5rem;
+}
+
+.texto-mazo h3 {
+    font-size: 1.5rem;
+    color: #eeeeee;
+}
+
+.descripcion-mazo {
+    color: #999999;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.nivel-de-corrupcion {
+    margin-top: 1rem;
+}
+
+
+.barra-stable {
+    width: 100%;
+    height: 8px;
+    background: rgb(13, 7, 7);
+    position: relative;
+
+}
+
+.nivel-estable {
+    height: 100%;
+    background: linear-gradient(90deg, #6c63ff, #00d4ff);
+}
+
+.nivel-corrupto {
+    height: 100%;
+    background: linear-gradient(90deg, #ff3366, #ff9500);
+}
+
+
+
+/* BOTONES */
+
+.primer-boton {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 2px;
+    position: relative;
+    
+}
+
+.centrar-botones {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.primer-boton {
+    background: #5548c8;
+    color: white;
+}
+
+.primer-boton:hover {
+    box-shadow: 0 0 30px rgba(108, 99, 255, 0.6);
+}
+
+
+/* PIE (de página web?) */
+
+footer {
+    background: #1a1a1a;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    color: #999999;
+}
