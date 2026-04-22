@@ -12,7 +12,7 @@ Como hacer funcionar la WEB
 
 Máquina Virtual
   - Muchíssimo más simple.
-  - Descargate el .ova 
+  - Descargate el metiendote en el enlace del txt /Proyecto_Intermodular_IanLasa/enlace_maquina.txt 
   - La enciendes, y ya, debería de encenderse el docker automáticamente
   - En el caso de que de problemas o quieras entrar
   - Tiene un usuario con sudo:
