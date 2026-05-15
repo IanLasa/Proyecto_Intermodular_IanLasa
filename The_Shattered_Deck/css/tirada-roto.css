@@ -1,0 +1,495 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap');
+
+/* ── Variables ── */
+:root {
+    --roto-red: #ff0033;
+    --roto-cyan: #00ffff;
+    --roto-green: #00ff41;
+    --roto-dark: #050505;
+}
+
+/* Fondo */
+body {
+    background: var(--roto-dark);
+    color: #eee;
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+    position: relative;
+}
+
+
+/* Por cambiar un poco el color de la barra de navegación*/
+header {
+    background: rgba(5, 5, 5, 0.95);
+    border-bottom: 1px solid rgba(255, 0, 51, 0.4);
+    position: relative;
+    z-index: 10;
+}
+
+/* Main */
+main {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 48px 32px;
+}
+
+/* ── Título glitch ── */
+.titulo-roto {
+    font-family: 'VT323', monospace;
+    font-size: 48px;
+    text-align: center;
+    color: #eee;
+    margin-bottom: 4px;
+    position: relative;
+    animation: glitch-title 3s infinite;
+    letter-spacing: 4px;
+}
+
+/* Efecto 3D */
+.titulo-roto::before,
+.titulo-roto::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.titulo-roto::before {
+    color: var(--roto-red);
+    animation: glitch-before 3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+
+.titulo-roto::after {
+    color: var(--roto-cyan);
+    animation: glitch-after 3s infinite;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+/* Mirado para estética */
+@keyframes glitch-title {
+
+    0%,
+    90%,
+    100% {
+        transform: translate(0);
+    }
+
+    92% {
+        transform: translate(-2px, 1px);
+    }
+
+    94% {
+        transform: translate(2px, -1px);
+    }
+
+    96% {
+        transform: translate(-1px, 2px);
+    }
+}
+
+@keyframes glitch-before {
+
+    0%,
+    90%,
+    100% {
+        transform: translate(0);
+        opacity: 0;
+    }
+
+    92% {
+        transform: translate(-3px, 0);
+        opacity: 0.8;
+    }
+
+    94% {
+        transform: translate(3px, 0);
+        opacity: 0.6;
+    }
+
+    96% {
+        transform: translate(0);
+        opacity: 0;
+    }
+}
+
+@keyframes glitch-after {
+
+    0%,
+    90%,
+    100% {
+        transform: translate(0);
+        opacity: 0;
+    }
+
+    93% {
+        transform: translate(3px, 0);
+        opacity: 0.8;
+    }
+
+    95% {
+        transform: translate(-3px, 0);
+        opacity: 0.6;
+    }
+
+    97% {
+        transform: translate(0);
+        opacity: 0;
+    }
+}
+
+/* ── Subtítulo ── */
+.subtitulo-roto {
+    text-align: center;
+    color: #555;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+    animation: flicker-text 5s infinite;
+}
+
+@keyframes flicker-text {
+
+    0%,
+    95%,
+    100% {
+        opacity: 1;
+    }
+
+    96% {
+        opacity: 0.3;
+    }
+
+    97% {
+        opacity: 1;
+    }
+
+    98% {
+        opacity: 0.5;
+    }
+}
+
+/* Grid de cartas */
+.cartas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 680px;
+    margin: 0 auto 3rem auto;
+}
+
+/* Carta wrapper */
+.carta-wrapper {
+    perspective: 1200px;
+    aspect-ratio: 2 / 3.5;
+    cursor: pointer;
+    animation: carta-shake 4s infinite;
+}
+
+@keyframes carta-shake {
+
+    0%,
+    92%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    93% {
+        transform: translate(-1px, 1px) rotate(-0.3deg);
+    }
+
+    94% {
+        transform: translate(1px, -1px) rotate(0.3deg);
+    }
+
+    95% {
+        transform: translate(-1px, 0) rotate(0deg);
+    }
+}
+
+.carta-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carta-wrapper.flipped .carta-inner {
+    transform: rotateY(180deg);
+}
+
+.carta-front,
+.carta-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+/* Reverso roto */
+.carta-back {
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 0, 51, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s;
+}
+
+.carta-wrapper:not(.no-click):hover .carta-back {
+    border-color: var(--roto-red);
+    box-shadow: 0 0 15px rgba(255, 0, 51, 0.3);
+}
+
+.patron-roto {
+    width: 65%;
+    height: 65%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+}
+
+.patron-roto span {
+    background: rgba(255, 0, 51, 0.15);
+    border-radius: 1px;
+    animation: patron-flicker 2s infinite;
+}
+
+/* Cambiar colores de las casillas */
+.patron-roto span:nth-child(odd) {
+    animation-delay: 0.2s;
+    background: rgba(0, 255, 255, 0.1);
+}
+
+.patron-roto span:nth-child(3n) {
+    animation-delay: 0.5s;
+    background: rgba(0, 255, 65, 0.08);
+}
+
+@keyframes patron-flicker {
+
+    0%,
+    85%,
+    100% {
+        opacity: 1;
+    }
+
+    87% {
+        opacity: 0.2;
+    }
+
+    89% {
+        opacity: 1;
+    }
+
+    91% {
+        opacity: 0.5;
+    }
+}
+
+/* frente roto */
+.carta-front {
+    transform: rotateY(180deg);
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 0, 51, 0.4);
+}
+
+.carta-front img {
+    width: 100%;
+    height: 85%;
+    object-fit: cover;
+    display: block;
+    animation: img-glitch 6s infinite;
+}
+
+/* cambiar las imagenes*/
+@keyframes img-glitch {
+
+    0%,
+    88%,
+    100% {
+        filter: saturate(0.3) hue-rotate(160deg) contrast(1.4) brightness(0.7);
+        transform: translate(0);
+    }
+
+    90% {
+        filter: saturate(2) hue-rotate(0deg) contrast(2) brightness(1.2);
+        transform: translate(-2px, 0);
+    }
+
+    91% {
+        filter: saturate(0.1) hue-rotate(280deg) contrast(1.8) brightness(0.5);
+        transform: translate(2px, 0);
+    }
+
+    92% {
+        filter: saturate(0.3) hue-rotate(160deg) contrast(1.4) brightness(0.7);
+        transform: translate(0);
+    }
+}
+
+.nombre-carta {
+    background: #050505;
+    font-family: 'VT323', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--roto-red);
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Cartas descartadas ── */
+.carta-wrapper.descartada .carta-back {
+    opacity: 0.15;
+    filter: grayscale(100%);
+    animation: none;
+}
+
+/* ── Separador ── */
+.separador {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto 2.5rem auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--roto-red), transparent);
+    opacity: 0;
+    transition: opacity 0.8s;
+}
+
+.separador.visible {
+    opacity: 0.6;
+}
+
+/* ── Caja de lectura ── */
+.lectura-box {
+    max-width: 680px;
+    margin: 0 auto;
+    background: rgba(5, 5, 5, 0.9);
+    border: 1px solid rgba(255, 0, 51, 0.3);
+    border-radius: 2px;
+    padding: 32px 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Línea de interferencia en la caja */
+.lectura-box::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 0, 51, 0.5);
+    animation: scan-line 4s linear infinite;
+}
+
+@keyframes scan-line {
+    0% {
+        top: -5%;
+    }
+
+    100% {
+        top: 105%;
+    }
+}
+
+.lectura-box.visible {
+    display: block;
+}
+
+.lectura-box.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lectura-titulo {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    color: var(--roto-red);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    animation: flicker-text 3s infinite;
+}
+
+.lectura-texto {
+    color: #bbb;
+    line-height: 1.9;
+    font-size: 15px;
+    font-family: 'Share Tech Mono', monospace;
+    text-align: left;
+}
+
+/* Cargando */
+.loading-roto {
+    font-family: 'VT323', monospace;
+    color: var(--roto-red);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    animation: flicker-text 1s infinite;
+}
+
+/* ── Botón nueva tirada ── */
+.btn-nueva {
+    display: block;
+    margin: 2.5rem auto 0 auto;
+    padding: 0.9rem 2.5rem;
+    background: transparent;
+    border: 1px solid var(--roto-red);
+    color: var(--roto-red);
+    font-family: 'VT323', monospace;
+    font-size: 14px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    position: relative;
+}
+
+.btn-nueva.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.btn-nueva:hover {
+    background: var(--roto-red);
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 0, 51, 0.5);
+}
+
+/* ── Nombre mazo ── */
+.nombre-mazo {
+    text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    color: #333;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+/* ── Footer ── */
+footer {
+    position: relative;
+    z-index: 2;
+    background: rgba(5, 5, 5, 0.95);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    color: #333;
+    border-top: 1px solid rgba(255, 0, 51, 0.15);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+}
