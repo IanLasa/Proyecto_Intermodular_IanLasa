@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Imagenes/The_Shattered_Deck.ico" />
+    <title>Contacto | The Shattered Deck</title>
+    <link rel="stylesheet" href="../css/contacto.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="lectura.html">Lectura</a></li>
+                <li><a href="about.html">Sobre el Proyecto</a></li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li>
+                <li><a href="../php/perfil.php">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="titulo-contacto">
+            <h1>CONTÁCTANOS</h1>
+            <p class="subtitulos">"Tus palabras también importan en este caos"</p>
+        </section>
+
+        <div class="tabla-contacto">
+            <div class="info-contacto">
+                <h2>¿Tienes algo que decirnos?</h2>
+                <p>The Shattered Deck es un proyecto en constante evolución. Tu feedback, preguntas y experiencias nos
+                    ayudan a mejorar esta experiencia de tarot interactivo.</p>
+
+                <div class="columna-info">
+                    <div class="caja-info">
+                        <div class="icono">💬</div>
+                        <h3>Feedback</h3>
+                        <p>Comparte tu experiencia con las lecturas, los decks y las cartas corruptas.</p>
+                    </div>
+
+                    <div class="caja-info">
+                        <div class="icono">🐛</div>
+                        <h3>Reportar Bugs</h3>
+                        <p>¿Encontraste algo más corrupto de lo esperado? Házmelo saber.</p>
+                    </div>
+
+                    <div class="caja-info">
+                        <div class="icono">💡</div>
+                        <h3>Sugerencias</h3>
+                        <p>Ideas para nuevos decks, mecánicas o formas de corrupción.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tabla-formulario-contacto">
+                <form class="formulario-contacto">
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" placeholder="¿Cómo te llamas?" required>
+                    </div>
+
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div>
+                        <label for="asunto">Asunto</label>
+                        <select required>
+                            <option value="">Selecciona un tema...</option>
+                            <option value="feedback">Feedback General</option>
+                            <option value="bug">Reportar Bug</option>
+                            <option value="suggestion">Sugerencia</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mazo">¿Con qué mazo tuviste una mala experiencia? (opcional)</label>
+                        <select>
+                            <option value="">Ninguno</option>
+                            <option value="mystic">Mazo mystico</option>
+                            <option value="rational">Mazo racional</option>
+                            <option value="cynical">Mazo sarcástico</option>
+                            <option value="broken">Mazo roto</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mensaje">Mensaje</label>
+                        <textarea rows="8" placeholder="Cuéntanos tu experiencia, sugerencia o pregunta..."
+                            required></textarea>
+                    </div>
+
+                    <div class="centrar-boton-contacto">
+                        <button type="enviar" class="boton-contacto">
+                            <span>Enviar Mensaje</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <section class="titulo-contacto">
+            <h2>Otras formas de contactar</h2>
+            <div class="cajas-contactar">
+                <section class="contactar-email">
+                    <span class="icono-enlaces">📧</span>
+                    <h3>Email Directo</h3>
+                    <p>ilasallore@educacion.navarra.es</p>
+                </section>
+
+                <a href="https://github.com/IanLasa/Proyecto_Intermodular_IanLasa" class="contactar-github">
+                    <span class="icono-enlaces">👾</span>
+                    <h3>GitHub</h3>
+                    <p>Contribuye al proyecto</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Shattered Deck | Una experiencia de tarot impulsada por IA</p>
+    </footer>
+
+    <script>
+        // Buscar elemnto**`.formulario-contacto`**, cuando se envía el formulario, para que no haga lo que haría de normal, y ejecute el script
+        document.querySelector(".formulario-contacto").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Creamos un objeto, para buscar y guardar los datos
+            const data = {
+                nombre: document.querySelector("input[type='text']").value,
+                email: document.querySelector("input[type='email']").value,
+                asunto: document.querySelector("select").value,
+                // el 1 es porque hay 2 selects
+                mazo: document.querySelectorAll("select")[1].value,
+                mensaje: document.querySelector("textarea").value
+            };
+
+            // Petición http sin recargar la página
+            fetch("/php/contacto.php", {
+                // que vamos a enviar datos
+                method: "POST",
+                // que esta en formato json
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                // convertir data a json
+                body: JSON.stringify(data)
+            })
+                // Si responde, convertimos la respuesta a json
+                .then(r => r.json())
+                // Comprobar si la respuesta es buena o no
+                .then(res => {
+                    if (res.success) {
+                        alert("Mensaje enviado correctamente");
+                    } else {
+                        alert(res.error || "Error al enviar");
+                    }
+                })
+
+                // En el caso que no reciba respuesta
+                .catch(() => alert("Error de conexión"));
+        });
+    </script>
+</body>
+
+</html>

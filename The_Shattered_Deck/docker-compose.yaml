@@ -1,0 +1,54 @@
+services:
+  web:
+    # imagen que se descarga
+    image: php:8.2-apache
+    container_name: shattered_deck_web
+    ports:
+      # puerto en el que se accede / puerto dentro del docker
+      - "8080:80"
+    volumes:
+       # la raiz del proyect en docker se ve como /var/www/html/
+      - .:/var/www/html/
+    entrypoint: # comandos que se ejecutan nada mas enencender el contenedor
+      >
+      sh -c "
+        docker-php-ext-install mysqli &&
+        apt-get update &&
+        apt-get install -y git &&
+        curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer &&
+        composer require phpmailer/phpmailer -d /var/www/html &&
+        apache2-foreground
+      "
+    networks:
+      # para meter todos en la misma red... aunque db y phpadmin no están en uso...
+      - red_proyecto
+    extra_hosts:
+      # para comunicar con la máquina real
+      - "host.docker.internal:host-gateway"
+
+  db:
+    image: mysql:8.0
+    container_name: mi_base_datos
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: miproyecto
+    volumes:
+      - ./db_data:/var/lib/mysql
+    networks:
+      - red_proyecto
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: mi_phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+    networks:
+      - red_proyecto
+
+networks:
+  red_proyecto:

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Imagenes/The_Shattered_Deck.ico" />
+    <title>Registro | The Shattered Deck</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="lectura.html">Lectura</a></li>
+                <li><a href="about.html">Sobre el Proyecto</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li>
+                <li><a href="../php/perfil.php">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="tamanyo-formulario">
+
+            <div class="caja-login">
+
+                <div class="titulo-formulario">
+                    <h1>REGISTRARSE</h1>
+                </div>
+
+                <form class="formulario" id="registerForm">
+
+                    <div>
+                        <label>Usuario</label>
+                        <input type="text" id="username" placeholder="usuario" required>
+                    </div>
+
+                    <div>
+                        <label>Contraseña</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div>
+                        <label>Repetir contraseña</label>
+                        <input type="password" id="password2" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="centrar-boton-formulario">
+                        <button type="submit" class="boton-iniciar-sesion">
+                            <span>CREAR CUENTA</span>
+                        </button>
+                    </div>
+
+                </form>
+
+                <div class="no-cuenta">
+                    <p>¿Ya tienes cuenta?
+                        <a href="login.html" class="registrarse">Inicia sesión aquí</a>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Shattered Deck | Registro de usuarios</p>
+    </footer>
+
+    <script>
+        // Más de lo mismo, para evitar que el formulario haga lo que haría de normal, y ejecute el script
+        document.getElementById("registerForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Sacar el usuario, y la contraseña (y la repetida)
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const password2 = document.getElementById("password2").value;
+
+            // Si no coinciden, sale un mini error
+            if (password !== password2) {
+                alert("Las contraseñas no coinciden");
+                return;
+            }
+
+            // Petición http que no recarga la página
+            fetch("/php/register.php", {
+                // Tipo de petición
+                method: "POST",
+                // Que formato se envía
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            })
+                // convertir la respuesta a JSON
+                .then(r => r.json())
+                
+                // Comprobar si la respuesta es buena oh no
+                .then(data => {
+
+                    if (data.success) {
+                        window.location.href = "/php/perfil.php";
+                    } else {
+                        alert(data.error || "Error desconocido");
+                    }
+
+                })
+                // En el caso de que no reciba respuesta
+                .catch(err => {
+                    console.error(err);
+                    alert("Error de conexión");
+                });
+        });
+    </script>
+
+</body>
+
+</html>
